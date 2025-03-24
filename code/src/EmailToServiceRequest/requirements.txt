@@ -1,0 +1,9 @@
+Flask
+python-docx
+pandas
+Pillow
+PyPDF2
+python-magic
+python-magic-bin
+pytesseract
+PyMuPDF
