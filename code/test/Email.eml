@@ -1,0 +1,54 @@
+From: ABC@gmail.com
+To: XYZ@gmail.com
+Subject: Au transfer
+Message-ID: <ac8afad2-48c5-054f-7d8f-a9e008594a21@gmail.com>
+Date: Mon, 24 Mar 2025 16:30:37 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_NmP-27cb086d4c6d38dc-Part_1"
+
+----_NmP-27cb086d4c6d38dc-Part_1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Bank Fund Transfer Request
+Date: [24/03/2025]
+ From: [ABC]
+ Account Number: [9697649749]
+ To: [XYZ]
+ Recipient Account Number: [13524375]
+ Bank Name: [XYZ]
+ Branch: [HDFC]
+ Amount: [100000]
+ Mode of Transfer: [NEFT / RTGS / IMPS / UPI / Wire Transfer]
+Purpose of Transfer:
+[Reason for transferring funds, e.g., payment for services, loan repayment,=
+ personal transfer, etc.]
+Authorization:
+I authorize the bank to debit my account and transfer the mentioned amount =
+to the recipient's account. Please process the transaction at the earliest.=
+
+Signature:
+ [ABC]
+Contact Details:
+ [ABC]
+
+----_NmP-27cb086d4c6d38dc-Part_1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<h3><strong>Bank Fund Transfer Request</strong></h3><p><strong>Date:</stron=
+g> [24/03/2025]</p><p> <strong>From:</strong> [ABC]</p><p> <strong>Account =
+Number:</strong> [9697649749]</p><p> <strong>To:</strong> [XYZ]</p><p> =
+<strong>Recipient Account Number:</strong> [13524375]</p><p> <strong>Bank =
+Name:</strong> [XYZ]</p><p> <strong>Branch:</strong> [HDFC]</p><p> =
+<strong>Amount:</strong> [100000]</p><p> <strong>Mode of Transfer:</strong>=
+ [NEFT / RTGS / IMPS / UPI / Wire Transfer]</p><h4><strong>Purpose of =
+Transfer:</strong></h4><p>[Reason for transferring funds, e.g., payment for=
+ services, loan repayment, personal transfer, etc.]</p><h4><strong>Authoriz=
+ation:</strong></h4><p>I authorize the bank to debit my account and =
+transfer the mentioned amount to the recipient's account. Please process =
+the transaction at the earliest.</p><p><strong>Signature:</strong></p><p> =
+[ABC]</p><p><strong>Contact Details:</strong></p><p> =
+[ABC]</p>
+----_NmP-27cb086d4c6d38dc-Part_1--
