@@ -142,7 +142,13 @@ def parse_eml(file_path):
                 email_info['Body'] = processEmailBody(part)
             else:
                 filename = part.get_filename()
-                file_type = magic.from_file(UPLOAD_FOLDER + '\\' + filename, mime=True)
+                attach_file_path = os.path.join(app.config['UPLOAD_FOLDER'], 'AttachTemp', filename)
+                if os.path.exists(attach_file_path):
+                    os.remove(attach_file_path)
+                with open(attach_file_path, "wb") as f:
+                    f.write(io.BytesIO(part.get_payload(decode=True)).getbuffer())
+                    f.close()
+                file_type = magic.from_file(attach_file_path, mime=True)
                 if filename and allowed_attachment_file(filename):
                     attachment_info = {
                         'filename': filename,
@@ -163,10 +169,10 @@ def parse_eml_and_attachments(file_path):
     for attachment in email_info['Attachments']:
         file_data = io.BytesIO(attachment['file_content'])
         attach_file_path = os.path.join(app.config['UPLOAD_FOLDER'], 'AttachTemp', attachment['filename'])
-        if os.path.exists(attach_file_path):
-            os.remove(attach_file_path)
-        with open(attach_file_path, "wb") as f:
-            f.write(file_data.getbuffer())
+        # if os.path.exists(attach_file_path):
+        #     os.remove(attach_file_path)
+        # with open(attach_file_path, "wb") as f:
+        #     f.write(file_data.getbuffer())
         
         attachment['extracted_text'] = ""
         if attachment['file_type'] == 'application/pdf':
