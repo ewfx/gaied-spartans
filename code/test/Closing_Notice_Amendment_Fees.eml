@@ -1,0 +1,57 @@
+From: john.doe@example.com
+To: support@example.com
+Subject: Closing Notice - Amendment Fees Request
+Message-ID: <569583e5-da95-8eed-e7f4-1552e507ca5e@example.com>
+Date: Wed, 26 Mar 2025 04:14:44 +0000
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="--_NmP-a8a6088e1feceb9c-Part_1"
+
+----_NmP-a8a6088e1feceb9c-Part_1
+Content-Type: multipart/alternative;
+ boundary="--_NmP-a8a6088e1feceb9c-Part_2"
+
+----_NmP-a8a6088e1feceb9c-Part_2
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Dear Support Team,
+
+Please find attached the closing notice related to the closing transaction =
+for our recent property deal. We would like to request an amendment to the =
+fees, as discussed earlier. Kindly review the details and get back to us at=
+ the earliest.
+
+Looking forward to your prompt action on this matter.
+
+Thank you.
+
+Best regards,
+John Doe
+Senior Manager | Property Solutions
+john.doe@example.com
++1-555-123-4567
+
+
+----_NmP-a8a6088e1feceb9c-Part_2
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<p>Dear Support Team,</p><p><br></p><p>Please find attached the closing =
+notice related to the closing transaction for our recent property deal. We =
+would like to request an amendment to the fees, as discussed earlier. =
+Kindly review the details and get back to us at the earliest.=
+</p><p><br></p><p>Looking forward to your prompt action on this matter.=
+</p><p><br></p><p>Thank you.</p><p><br></p><p>Best regards,</p><p>John =
+Doe</p><p>Senior Manager | Property Solutions</p><p>john.doe@example.=
+com</p><p>+1-555-123-4567</p><p><br></p>
+----_NmP-a8a6088e1feceb9c-Part_2--
+
+----_NmP-a8a6088e1feceb9c-Part_1
+Content-Type: text/plain; name=Invoice_12345_Adjustment_Details.txt
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename=Invoice_12345_Adjustment_Details.txt
+
+VGhlIGRvY3VtZW50IGNvbnRhaW5zIGEgZGV0YWlsZWQgYnJlYWtkb3duIG9mIHRoZSByZXF1ZXN0
+ZWQgYWRqdXN0bWVudCBmb3IgaW52b2ljZSAjMTIzNDUu
+----_NmP-a8a6088e1feceb9c-Part_1--
