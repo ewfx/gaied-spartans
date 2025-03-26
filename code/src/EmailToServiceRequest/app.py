@@ -7,7 +7,7 @@ import PyPDF2
 import fitz  # PyMuPDF
 from PIL import Image
 import pytesseract
-import magic
+# import magic
 import io
 from email import message_from_file
 from email.policy import default
@@ -152,7 +152,8 @@ def parse_eml(file_path):
                 with open(attach_file_path, "wb") as f:
                     f.write(io.BytesIO(part.get_payload(decode=True)).getbuffer())
                     f.close()
-                file_type = magic.from_file(attach_file_path, mime=True)
+                # file_type = magic.from_file(attach_file_path, mime=True)
+                file_name_without_extenstion, file_type = os.path.splitext(filename)
                 if filename and allowed_attachment_file(filename):
                     attachment_info = {
                         'filename': filename,
@@ -179,17 +180,17 @@ def parse_eml_and_attachments(file_path):
         #     f.write(file_data.getbuffer())
         
         attachment['extracted_text'] = ""
-        if attachment['file_type'] == 'application/pdf':
+        if attachment['file_type'] == '.pdf':
             attachment['extracted_text'] = read_pdf(attach_file_path)
-        elif attachment['file_type'] in ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword']:
+        elif attachment['file_type'] in ['.doc','.docx']:
             attachment['extracted_text'] = read_docx(attach_file_path)
-        elif attachment['file_type'] == 'text/plain':
+        elif attachment['file_type'] == '.txt':
             attachment['extracted_text'] = read_txt(attach_file_path)
-        elif attachment['file_type'] == 'application/vnd.ms-excel' or attachment['file_type'] == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
-            attachment['extracted_text'] = read_xls(attach_file_path)
-        elif attachment['file_type'] == 'text/csv':
-            attachment['extracted_text'] = read_csv(attach_file_path)
-        elif attachment['file_type'].startswith("image/"):
+        # elif attachment['file_type'] == 'application/vnd.ms-excel' or attachment['file_type'] == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+        #     attachment['extracted_text'] = read_xls(attach_file_path)
+        # elif attachment['file_type'] == 'text/csv':
+        #     attachment['extracted_text'] = read_csv(attach_file_path)
+        elif attachment['file_type'] == '.jpg':
             attachment['extracted_text'] = read_image(attach_file_path)
         
         attachment['file_content'] = None
