@@ -232,34 +232,37 @@ def upload_file():
             # file_name="Invoice.docx"
             # file_path = os.path.join(model_folder,file_name)
             llm=Llama(model_path)
+            content = email_info['Body']
+            response = llm(f"Analyze the following document and summarize its purpose:\n\n{content}")
+            output = response["choices"][0]["text"]
             # document_text = read_docx_no_paragraphs(email_info.body)
             # chunks = split_text(document_text,max_length=400)
-            chunks = split_text(email_info['Body'],max_length=400)
+            # chunks = split_text(email_info['Body'],max_length=400)
 
 
-            few_shot_prompt = (
-                "You are an expert at classifying documents by their request type."
-                "Based on the content, assign one of the following labels:Finacial, Techincal, or Legal.\n\n"
-                "Return only Answer with no explanation.\n\n"
-                "Example 1:\n"
-                "Document:Reason for transferring funds\n"
-                "Request Type:Financial\n\n"
-                "Example 2:\n"
-                "Document:API integration guide explaining authentication procedures.\n"
-                "Request Type:Technical\n\n"
-                "Now classify the following document.\n"
-                "Document:{document_chunk}\n"
-                "Request Type:"
-            )
-            results = []
-            for chunk in chunks:
-                prompt = few_shot_prompt.format(document_chunk=chunk)
-                response=llm(prompt)
-                answer = response["choices"][0]["text"].strip()
-                results.append(answer)
+            # few_shot_prompt = (
+            #     "You are an expert at classifying documents by their request type."
+            #     "Based on the content, assign one of the following labels:Finacial, Techincal, or Legal.\n\n"
+            #     "Return only Answer with no explanation.\n\n"
+            #     "Example 1:\n"
+            #     "Document:Reason for transferring funds\n"
+            #     "Request Type:Financial\n\n"
+            #     "Example 2:\n"
+            #     "Document:API integration guide explaining authentication procedures.\n"
+            #     "Request Type:Technical\n\n"
+            #     "Now classify the following document.\n"
+            #     "Document:{document_chunk}\n"
+            #     "Request Type:"
+            # )
+            # results = []
+            # for chunk in chunks:
+            #     prompt = few_shot_prompt.format(document_chunk=chunk)
+            #     response=llm(prompt)
+            #     answer = response["choices"][0]["text"].strip()
+            #     results.append(answer)
 
-            final_classification = Counter(results).most_common(1)[0][0]
-            output = {"request_type":final_classification}
+            # final_classification = Counter(results).most_common(1)[0][0]
+            # output = {"request_type":final_classification}
 
             return jsonify({"request_type": output}), 200
         except Exception as e:
