@@ -227,13 +227,15 @@ def upload_file():
             if os.path.exists(file_path):
                 os.remove(file_path)
             model_file="Meta-Llama-3-8B-Instruct-Q4_0.gguf"
-            model_folder = r"C:\Users\padhideb"
+            model_folder = r"C:\Users\bansh"
             model_path = os.path.join(model_folder,model_file)
             # file_name="Invoice.docx"
             # file_path = os.path.join(model_folder,file_name)
             llm=Llama(model_path)
-            document_text = read_docx_no_paragraphs(email_info.body)
-            chunks = split_text(document_text,max_length=400)
+            # document_text = read_docx_no_paragraphs(email_info.body)
+            # chunks = split_text(document_text,max_length=400)
+            chunks = split_text(email_info['Body'],max_length=400)
+
 
             few_shot_prompt = (
                 "You are an expert at classifying documents by their request type."
@@ -259,7 +261,7 @@ def upload_file():
             final_classification = Counter(results).most_common(1)[0][0]
             output = {"request_type":final_classification}
 
-            return jsonify({"email_info": email_info}), 200
+            return jsonify({"request_type": output}), 200
         except Exception as e:
             return jsonify({"error": "Invalid file format"}), 400
     
