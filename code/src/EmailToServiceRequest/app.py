@@ -58,6 +58,7 @@ def read_pdf(file_path):
                 ocr_text = pytesseract.image_to_string(img)
                 text += ocr_text
 
+        doc.close()
     return text
 
 def read_docx(file_path):
@@ -73,7 +74,7 @@ def read_docx(file_path):
         if "image" in rel.target_ref:
             image = Image.open(io.BytesIO(rel.target_part.blob))
             text += pytesseract.image_to_string(image)
-    
+    doc.close()
     return text
 
 def read_txt(file_path):
@@ -146,7 +147,7 @@ def parse_eml(file_path):
                 email_info['Body'] = processEmailBody(part)
             else:
                 filename = part.get_filename()
-                attach_file_path = os.path.join(app.config['UPLOAD_FOLDER'], 'AttachTemp', filename)
+                attach_file_path = os.path.join('C:\\Hacathon 2025\\gaied-spartans\\code\\test', filename)
                 if os.path.exists(attach_file_path):
                     os.remove(attach_file_path)
                 with open(attach_file_path, "wb") as f:
@@ -173,7 +174,7 @@ def parse_eml_and_attachments(file_path):
     # Process each attachment if present
     for attachment in email_info['Attachments']:
         file_data = io.BytesIO(attachment['file_content'])
-        attach_file_path = os.path.join(app.config['UPLOAD_FOLDER'], 'AttachTemp', attachment['filename'])
+        attach_file_path = os.path.join('C:\\Hacathon 2025\\gaied-spartans\\code\\test', attachment['filename'])
         # if os.path.exists(attach_file_path):
         #     os.remove(attach_file_path)
         # with open(attach_file_path, "wb") as f:
@@ -195,8 +196,8 @@ def parse_eml_and_attachments(file_path):
         
         attachment['file_content'] = None
 
-        if os.path.exists(attach_file_path):
-            os.remove(attach_file_path)
+        # if os.path.exists(attach_file_path):
+        #     os.remove(attach_file_path)
 
     return email_info
 def read_docx_no_paragraphs(file_path):
@@ -235,34 +236,7 @@ def upload_file():
             content = email_info['Body']
             response = llm(f"Analyze the following document and summarize its purpose:\n\n{content}")
             output = response["choices"][0]["text"]
-            # document_text = read_docx_no_paragraphs(email_info.body)
-            # chunks = split_text(document_text,max_length=400)
-            # chunks = split_text(email_info['Body'],max_length=400)
-
-
-            # few_shot_prompt = (
-            #     "You are an expert at classifying documents by their request type."
-            #     "Based on the content, assign one of the following labels:Finacial, Techincal, or Legal.\n\n"
-            #     "Return only Answer with no explanation.\n\n"
-            #     "Example 1:\n"
-            #     "Document:Reason for transferring funds\n"
-            #     "Request Type:Financial\n\n"
-            #     "Example 2:\n"
-            #     "Document:API integration guide explaining authentication procedures.\n"
-            #     "Request Type:Technical\n\n"
-            #     "Now classify the following document.\n"
-            #     "Document:{document_chunk}\n"
-            #     "Request Type:"
-            # )
-            # results = []
-            # for chunk in chunks:
-            #     prompt = few_shot_prompt.format(document_chunk=chunk)
-            #     response=llm(prompt)
-            #     answer = response["choices"][0]["text"].strip()
-            #     results.append(answer)
-
-            # final_classification = Counter(results).most_common(1)[0][0]
-            # output = {"request_type":final_classification}
+         
 
             return jsonify({"request_type": output}), 200
         except Exception as e:
